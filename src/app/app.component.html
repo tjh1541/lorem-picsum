@@ -1,0 +1,26 @@
+<mat-card id="control">
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Number of Images</mat-label>
+    <input type="number" min="1" max="100" matInput [(ngModel)]="numImages" (keydown)="validateKey($event)">
+    <mat-hint>Whole numbers between 1 and 100</mat-hint>
+  </mat-form-field>
+  <button mat-raised-button color="primary" [disabled]="numImages > 100 || numImages < 1" (click)="loadImages()">Load Images</button>
+  <mat-form-field class="w-100" appearance="outline">
+    <mat-label>Search</mat-label>
+    <input type="text" matInput [(ngModel)]="filterText" (keyup)="filter()">
+    <mat-hint>Search by ID or Author</mat-hint>
+  </mat-form-field>
+</mat-card>
+<div id="result">
+  <mat-spinner *ngIf="dataLoading"></mat-spinner>
+  <div *ngIf="!dataLoading && filteredImages.length == 0">No Results</div>
+  <ng-container *ngFor="let image of filteredImages">
+    <mat-card>
+      <img mat-card-image src={{image.url}}>
+      <mat-card-header>
+        <mat-card-title>ID: {{image.id}}</mat-card-title>
+        <mat-card-subtitle>Author: {{image.author}}</mat-card-subtitle>
+      </mat-card-header>
+    </mat-card>
+  </ng-container>
+</div>

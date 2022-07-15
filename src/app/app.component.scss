@@ -1,0 +1,28 @@
+:host {
+    display: flex;
+    height: 100%;
+    padding: 1rem;
+
+    #control {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 300px;
+
+        button {
+            margin-bottom: 2rem;
+        }
+    }
+
+    #result {
+        height: 100%;
+        width: 100%;
+        padding: 0 1rem;
+        overflow-y: auto;
+
+        .mat-card {
+            display: flex;
+            margin-bottom: 1rem;
+        }
+    }
+}
